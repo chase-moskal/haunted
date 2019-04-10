@@ -38,3 +38,6 @@ export class Hook {
     id: number;
     el: HTMLElement;
 }
+
+type LighterHtmlRenderFunction = (node: Element | DocumentFragment, callback: () => any) => void;
+export function adaptLighterHtml(render: LighterHtmlRenderFunction): RenderFunction;

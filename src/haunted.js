@@ -1,3 +1,4 @@
+export { adaptLighterHtml } from './adapt-lighter-html.js';
 export { component } from './component.js';
 export { useCallback } from "./use-callback.js";
 export { useEffect } from './use-effect.js';

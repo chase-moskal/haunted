@@ -1,0 +1,19 @@
+<!doctype html>
+
+<my-counter></my-counter>
+
+<script type="module">
+  import { render, html } from 'https://unpkg.com/lighterhtml@0.9.2/esm/index.js?module';
+  import { component, useState, adaptLighterHtml } from '../haunted.js';
+
+  function Counter() {
+    const [count, setCount] = useState(0);
+
+    return html`
+      <div id="count">${count}</div>
+      <button type="button" onclick=${() => setCount(count + 1)}>Increment</button>
+    `;
+  }
+
+  customElements.define('my-counter', component(adaptLighterHtml(render), Counter, HTMLElement));
+</script>
