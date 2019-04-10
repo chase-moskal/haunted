@@ -29,7 +29,7 @@ const write = scheduler();
 
 class Container {
   constructor(render, renderer, frag, host) {
-    if (!render) throw new Error(`haunted container requires renderFunction`)
+    if (!render) throw new Error(`haunted container requires 'render' function`)
     this._renderFunction = render
     this.renderer = renderer;
     this.frag = frag;
