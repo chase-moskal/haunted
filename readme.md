@@ -9,8 +9,10 @@ React's Hooks API but for standard web components and [hyperHTML](https://codepe
 <my-counter></my-counter>
 
 <script type="module">
-  import { html } from 'https://unpkg.com/lit-html/lit-html.js';
-  import { component, useState } from 'https://unpkg.com/haunted/haunted.js';
+  import { html, render } from 'https://unpkg.com/lit-html/lit-html.js';
+  import { configureComponent, useState } from 'https://unpkg.com/haunted/haunted.js';
+
+  const component = configureComponent({render});
 
   function Counter() {
     const [count, setCount] = useState(0);
@@ -70,8 +72,10 @@ Using Haunted you can create custom elements or *virtual* components (components
 The easiest way to create components is by importing `component` and creating a custom element like so:
 
 ```js
-import { component } from 'haunted';
-import { html } from 'lit-html';
+import { configureComponent } from 'haunted';
+import { html, render } from 'lit-html';
+
+const component = configureComponent({render});
 
 const App = component(({ name }) => {
   return html`Hello ${name}!`;
@@ -119,8 +123,11 @@ Haunted also has the concept of *virtual components*. These are components that 
 The following is an example of using virtual components:
 
 ```js
-import { useState, virtual, component } from 'haunted';
-import { html, render } from 'lit-html';
+import { useState, configureVirtual, configureComponent } from 'haunted';
+import { html, directive, render } from 'lit-html';
+
+const virtual = configureVirtual({directive});
+const component = configureComponent({render});
 
 const Counter = virtual(() => {
   const [count, setCount] = useState(0);
@@ -174,8 +181,10 @@ Useful for side-effects that run after the render has been commited.
 <my-counter></my-counter>
 
 <script type="module">
-  import { html } from 'https://unpkg.com/lit-html/lit-html.js';
-  import { component, useState, useEffect } from 'https://unpkg.com/haunted/haunted.js';
+  import { html, render } from 'https://unpkg.com/lit-html/lit-html.js';
+  import { configureComponent, useState, useEffect } from 'https://unpkg.com/haunted/haunted.js';
+
+  const component = configureComponent({render});
 
   function Counter() {
     const [count, setCount] = useState(0);
@@ -248,8 +257,10 @@ Create state that updates after being ran through a reducer function.
 
 
 <script type="module">
-  import { html } from 'https://unpkg.com/lit-html/lit-html.js';
-  import { component, useReducer } from 'https://unpkg.com/haunted/haunted.js';
+  import { html, render } from 'https://unpkg.com/lit-html/lit-html.js';
+  import { configureComponent, useReducer } from 'https://unpkg.com/haunted/haunted.js';
+
+  const component = configureComponent({render});
 
   const initialState = {count: 0};
 
@@ -288,8 +299,10 @@ Create a memoized state value. Only reruns the function when dependent values ha
 <my-app></my-app>
 
 <script type="module">
-  import { html } from 'https://unpkg.com/lit-html/lit-html.js';
-  import { component, useMemo, useState } from 'https://unpkg.com/haunted/haunted.js';
+  import { html, render } from 'https://unpkg.com/lit-html/lit-html.js';
+  import { configureComponent, useMemo, useState } from 'https://unpkg.com/haunted/haunted.js';
+
+  const component = configureComponent({render});
 
   function fibonacci(num) {
     if (num <= 1) return 1;
@@ -324,7 +337,9 @@ Limited only to "real" components for now.
 
 <script type="module">
   import { html } from 'https://unpkg.com/lit-html/lit-html.js';
-  import { component, createContext, useContext } from 'https://unpkg.com/haunted/haunted.js';
+  import { configureComponent, createContext, useContext } from 'https://unpkg.com/haunted/haunted.js';
+
+  const component = configureComponent({render});
 
   const ThemeContext = createContext('dark');
 
@@ -391,12 +406,14 @@ const useMyHook = hook(class extends Hook {
 
 ### Function Signatures
 
-`component(renderer, BaseElement, options): Element`
+`component(render, renderer, BaseElement, options): Element`
+- render = *lit-html's render function*
 - renderer = ``` (element) => html`...` ```  
 - BaseElement = `HTMLElement`
 - options = `{useShadowDOM: true}`
 
-`virtual(renderer): directive`
+`virtual(directive, renderer): directive`
+- directive = *lit-html's directive function*
 - renderer = ``` (element) => html`...` ```  
 
 ## License
