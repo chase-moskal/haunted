@@ -39,5 +39,5 @@ export class Hook {
     el: HTMLElement;
 }
 
-type LighterHtmlRenderFunction = (node: Element | DocumentFragment, callback: () => any) => void;
+type LighterHtmlRenderFunction = (node: Element | DocumentFragment, callback: () => DocumentFragment) => void;
 export function adaptLighterHtml(render: LighterHtmlRenderFunction): RenderFunction;
