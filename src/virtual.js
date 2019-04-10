@@ -1,5 +1,4 @@
 import { Container } from './core.js';
-import { directive } from './lit.js';
 
 const partToContainer = new WeakMap();
 const containerToPart = new WeakMap();
@@ -24,7 +23,7 @@ class DirectiveContainer extends Container {
 
 
 
-function withHooks(renderer) {
+function withHooks(directive, renderer) {
   function factory(...args) {
     return part => {
       let cont = partToContainer.get(part);
