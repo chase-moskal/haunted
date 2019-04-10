@@ -2,7 +2,7 @@
 <my-parent></my-parent>
 
 <script type="module">
-  import { html } from 'https://unpkg.com/lit-html/lit-html.js';
+  import { render, html } from "../lit-html.js";
   import { component, useState } from '../haunted.js';
 
   function MyParent() {
@@ -14,7 +14,7 @@
     `;
   }
 
-  customElements.define('my-parent', component(MyParent));
+  customElements.define('my-parent', component(render, MyParent));
 
   function MyChild({ name }) {
     return html`
@@ -22,5 +22,5 @@
     `;
   }
 
-  customElements.define('my-child', component(MyChild));
+  customElements.define('my-child', component(render, MyChild));
 </script>

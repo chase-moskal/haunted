@@ -3,7 +3,8 @@
 <my-app></my-app>
 
 <script type="module">
-  import { component, createContext, useContext, useState, html } from '../haunted.js';
+  import { render, html } from "../lit-html.js";
+  import { component, createContext, useContext, useState } from '../haunted.js';
 
   const ThemeContext = createContext();
 
@@ -25,7 +26,7 @@
     `;
   }
 
-  customElements.define('my-circle', component(Circle));
+  customElements.define('my-circle', component(render, Circle));
 
   function Child() {
     const context = useContext(ThemeContext);
@@ -33,7 +34,7 @@
     return html`<my-circle .theme=${context}></my-circle>`;
   }
 
-  customElements.define('my-child', component(Child));
+  customElements.define('my-child', component(render, Child));
   customElements.define('theme-consumer', ThemeContext.Consumer);
 
   function App() {
@@ -69,5 +70,5 @@
     `;
   }
 
-  customElements.define('my-app', component(App));
+  customElements.define('my-app', component(render, App));
 </script>

@@ -4,7 +4,7 @@
 
 
 <script type="module">
-  import { html } from 'https://unpkg.com/lit-html/lit-html.js';
+  import { render, html } from "../lit-html.js";
   import { component, useReducer } from '../haunted.js';
 
   const initialState = {count: 0};
@@ -30,5 +30,5 @@
     `;
   }
 
-  customElements.define('my-counter', component(Counter));
+  customElements.define('my-counter', component(render, Counter));
 </script>
