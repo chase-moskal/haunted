@@ -5,35 +5,37 @@
  * postive tests have no errors and the negative tests have errors.
  */
 
-import { render, html } from "./lit-html.js";
+import { render, html, directive } from "./lit-html.js";
 
-import { component, 
-         useCallback, 
-         useEffect, 
-         useState, 
-         useReducer, 
-         useMemo, 
-         withHooks, 
-         virtual,
-         useContext, 
-         createContext, 
-         hook, 
-         Hook } from '../index.js';
+import {
+    component,
+    useCallback,
+    useEffect,
+    useState,
+    useReducer,
+    useMemo,
+    withHooks,
+    virtual,
+    useContext,
+    createContext,
+    hook,
+    Hook
+} from '../index.js';
 
 class MyElement extends HTMLElement {}
 
 // component() tests
 // positive tests, should all pass
-component(() => html``)
-component(() => html``, MyElement)
-const componentTest1 = component(() => html``, HTMLElement, { useShadowDOM: true});
+component(render, () => html``)
+component(render, () => html``, MyElement)
+const componentTest1 = component(render, () => html``, HTMLElement, { useShadowDOM: true});
 customElements.define('test-element', componentTest1);
 // negative tests, should all fail
-component();
-component('foo');
-component(()=>html``, 'foo');
-component(()=>html``, HTMLElement, 'foo');
-const componentTest2 = component(()=>{}, HTMLElement, {
+component(render);
+component(render, 'foo');
+component(render, ()=>html``, 'foo');
+component(render, ()=>html``, HTMLElement, 'foo');
+const componentTest2 = component(render, ()=>{}, HTMLElement, {
     useShadowDOM: true,
     foo: 'bar'
 });
@@ -97,11 +99,11 @@ useMemo(() => {}, 1);
 // positive tests, should all pass
 const withHooksTest = withHooks(() => {})
 withHooksTest();
-const virtualTest = virtual(() => {});
+const virtualTest = virtual(directive, () => {});
 virtualTest();
 // negactive tests, should all fail
 withHooks();
-virtual();
+virtual(directive);
 
 // createContext
 // positive tests, should all pass

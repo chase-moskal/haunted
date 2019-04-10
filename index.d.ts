@@ -1,9 +1,16 @@
-import { html, render, TemplateResult } from 'lit-html';    
-export { html, render, TemplateResult }    
+import { html, render, TemplateResult, RenderOptions, directive } from 'lit-html';
 
-export function component(renderer: (el: HTMLElement) => TemplateResult, BaseElement?: Function, options?: {
-    useShadowDOM: boolean
-}): Function;
+type RenderFunction = typeof render
+type DirectiveFunction = typeof directive
+
+export function component(
+    render: RenderFunction,
+    renderer: (el: HTMLElement) => TemplateResult,
+    BaseElement?: Function,
+    options?: {
+        useShadowDOM: boolean
+    }
+): Function;
 
 export function useCallback(fn: Function, inputs: any[]): Function;
 
@@ -16,7 +23,7 @@ export function useReducer(reducer: (state: any, action: any) => any, initialSta
 export function useMemo(fn: Function, values: any[]): any;
 
 export function withHooks(renderer: Function): Function;
-export function virtual(renderer: Function): Function;
+export function virtual(directive: DirectiveFunction, renderer: Function): Function;
 
 interface Context {
     Provider: Function;
