@@ -66,4 +66,12 @@ function teardownOnRemove(cont, part, node = part.startNode) {
   mo.observe(frag, { childList: true });
 }
 
-export { withHooks, withHooks as virtual }
+const configureWithHooks = ({directive}) =>
+  renderer => virtual(directive, renderer);
+
+export {
+  withHooks,
+  withHooks as virtual,
+  configureWithHooks,
+  configureWithHooks as configureVirtual
+}

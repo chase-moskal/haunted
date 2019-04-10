@@ -83,10 +83,10 @@ function component(render, renderer, BaseElement = HTMLElement, options = {useSh
   return Element;
 }
 
-const makeComponentFactory = render => (
+const configureComponent = ({render}) => (
   renderer,
   BaseElement = HTMLElement,
   options = {useShadowDOM: true}
-) => component(render, renderer, BaseElement, options)
+) => component(render, renderer, BaseElement, options);
 
-export { component, makeComponentFactory };
+export { component, configureComponent };

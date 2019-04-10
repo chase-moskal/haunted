@@ -12,6 +12,10 @@ export function component(
     }
 ): Function;
 
+export function configureComponent(options: {
+    render: RenderFunction
+})
+
 export function useCallback(fn: Function, inputs: any[]): Function;
 
 export function useEffect(fn: () => Function | void, inputs?: any[]): void;
@@ -22,8 +26,11 @@ export function useReducer(reducer: (state: any, action: any) => any, initialSta
 
 export function useMemo(fn: Function, values: any[]): any;
 
-export function withHooks(renderer: Function): Function;
-export function virtual(directive: DirectiveFunction, renderer: Function): Function;
+export function withHooks(directive: DirectiveFunction, renderer: Function): Function;
+export const virtual: typeof virtual;
+
+export function configureWithHooks(options: {directive: DirectiveFunction}): (renderer: Function) => void;
+export const configureVirtual: typeof configureWithHooks
 
 interface Context {
     Provider: Function;
