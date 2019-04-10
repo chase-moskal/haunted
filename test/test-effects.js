@@ -1,4 +1,5 @@
-import { component, html, useEffect, useState } from '../web.js';
+import { html } from "./lit-html.js";
+import { component, useEffect, useState } from '../web.js';
 import { attach, cycle } from './helpers.js';
 
 describe('useEffect', () => {

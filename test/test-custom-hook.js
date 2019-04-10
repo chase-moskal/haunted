@@ -1,4 +1,5 @@
-import { component, html, hook, Hook } from '../web.js';
+import { html } from "./lit-html.js";
+import { component, hook, Hook } from '../web.js';
 import { attach, cycle } from './helpers.js';
 
 let constructorRan = false;

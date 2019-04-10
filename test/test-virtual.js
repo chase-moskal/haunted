@@ -1,4 +1,5 @@
-import { component, html, render, useState, useEffect, withHooks, virtual } from '../web.js';
+import { render, html } from "./lit-html.js";
+import { component, useState, useEffect, withHooks, virtual } from '../web.js';
 import { attach, cycle } from './helpers.js';
 
 describe('virtual()', () => {

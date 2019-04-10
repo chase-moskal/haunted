@@ -5,6 +5,8 @@
  * postive tests have no errors and the negative tests have errors.
  */
 
+import { render, html } from "./lit-html.js";
+
 import { component, 
          useCallback, 
          useEffect, 
@@ -16,9 +18,7 @@ import { component,
          useContext, 
          createContext, 
          hook, 
-         Hook,
-         html, 
-         render } from '../index.js';
+         Hook } from '../index.js';
 
 class MyElement extends HTMLElement {}
 

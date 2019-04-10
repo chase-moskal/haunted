@@ -1,4 +1,5 @@
-import { component, html } from '../web.js';
+import { html } from "./lit-html.js";
+import { component } from '../web.js';
 import { attach, later } from './helpers.js';
 
 describe('Passing props', () => {

@@ -1,4 +1,5 @@
-import { component, html, createContext, useContext, useState } from '../web.js';
+import { html } from "./lit-html.js";
+import { component, createContext, useContext, useState } from '../web.js';
 import { attach, cycle } from './helpers.js';
 
 describe('context', function() {
