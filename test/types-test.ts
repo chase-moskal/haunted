@@ -5,7 +5,7 @@
  * postive tests have no errors and the negative tests have errors.
  */
 
-import { render, html, directive } from "./lit-html.js";
+import { render, html, directive } from "../lit-html.js";
 
 import {
     component,
