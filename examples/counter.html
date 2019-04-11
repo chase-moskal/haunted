@@ -3,7 +3,7 @@
 <my-counter></my-counter>
 
 <script type="module">
-  import { render, html } from "../lit-html.js";
+  import { html } from "../lit-html.js";
   import { component, useState } from '../haunted.js';
 
   function Counter() {
@@ -15,5 +15,5 @@
     `;
   }
 
-  customElements.define('my-counter', component(render, Counter));
+  customElements.define('my-counter', component(Counter));
 </script>
