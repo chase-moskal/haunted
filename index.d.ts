@@ -4,7 +4,6 @@ type RenderFunction = typeof render
 type DirectiveFunction = typeof directive
 
 export function component(
-    render: RenderFunction,
     renderer: (el: HTMLElement) => TemplateResult,
     BaseElement?: Function,
     options?: {
@@ -14,7 +13,7 @@ export function component(
 
 export function configureComponent(options: {
     render: RenderFunction
-})
+});
 
 export function useCallback(fn: Function, inputs: any[]): Function;
 
@@ -26,11 +25,10 @@ export function useReducer(reducer: (state: any, action: any) => any, initialSta
 
 export function useMemo(fn: Function, values: any[]): any;
 
-export function withHooks(directive: DirectiveFunction, renderer: Function): Function;
-export const virtual: typeof virtual;
+export function virtual(directive: DirectiveFunction, renderer: Function): Function;
+export const withHooks: typeof virtual;
 
-export function configureWithHooks(options: {directive: DirectiveFunction}): (renderer: Function) => void;
-export const configureVirtual: typeof configureWithHooks
+export function configureVirtual(options: {directive: DirectiveFunction}): (renderer: Function) => void;
 
 interface Context {
     Provider: Function;

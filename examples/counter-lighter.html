@@ -4,7 +4,7 @@
 
 <script type="module">
   import { render, html } from 'https://unpkg.com/lighterhtml@0.9.2/esm/index.js?module';
-  import { configureComponent, useState, adaptLighterHtml } from '../haunted.js';
+  import { configureComponent, adaptLighterHtml, useState } from '../haunted.js';
 
   const component = configureComponent({render: adaptLighterHtml(render)})
 
