@@ -9,13 +9,16 @@
   <body>
     <counter-app></counter-app>
     <script type="module">
-import { html, render, directive } from "https://unpkg.com/lit-html/lit-html.js";
+import { html, render, directive } from "../../lit-html.js";
 import {
-  component,
+  configureComponent,
   useEffect,
-  virtual,
+  configureVirtual,
   useState
 } from "../src/haunted.js";
+
+const component = configureComponent({render});
+const virtual = configureVirtual({directive});
 
 const Counter = () => {
   useEffect(() => {
@@ -33,7 +36,7 @@ const Counter = () => {
   `;
 };
 
-customElements.define("component-counter", component(render, Counter));
+customElements.define("component-counter", component(Counter));
 
 const Main = () => {
   const [show, toggle] = useState(true);
@@ -52,11 +55,11 @@ const Main = () => {
     <button @click="${() => toggle2(!show2)}">
       ${show2 ? "Hide" : "Show"}
     </button>
-    ${show2 ? virtual(directive, Counter)() : undefined}
+    ${show2 ? virtual(Counter)() : undefined}
   `;
 };
 
-customElements.define("counter-app", component(render, Main));
+customElements.define("counter-app", component(Main));
     
     </script>
   </body>
